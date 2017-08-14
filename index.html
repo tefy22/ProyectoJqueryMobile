@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.css">
+	<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<style type="text/css">
+		#divMapa, #divMapa2{
+			width: 100%;
+			height: 300px;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div data-role="page" id="pagInicio">
+		<div data-role="header">
+			<h1>Gestion Hotel</h1>
+		</div>
+		<div data-role="content">
+			<a id="btnRegistrarHotel" data-role="button">Registrar Hotel</a>
+			<a id="btnListarHoteles" data-role="button">Listar Hoteles</a>
+		</div>
+		<div data-role="footer">
+			<p align="center">Gestion Hotel</p>
+		</div>
+	</div>
+
+	<div data-role="page" id="pagRegistrar">
+		
+		<div data-role="content">
+			<form>
+				<div class="ui-field-contain">
+					<label for="id">Id:</label>
+					<input type="text" id="id" name="id" readonly>
+				</div>
+				<div class="ui-field-contain">
+					<label for="nombre">Nombre:</label>
+					<input type="text" id="nombre" name="nombre">
+				</div>
+				<div class="ui-field-contain">
+					<label for="nombre">Ubicacion:</label>
+				</div>
+				<div data-role="content" id="divMapa"></div>
+				<div class="ui-field-contain">
+					<label for="ciudad">Ciudad:</label>
+					<input type="text" id="ciudad" name="ciudad">
+				</div>
+				<div class="ui-field-contain">
+					<label for="telefono">Telefono:</label>
+					<input type="text" id="telefono" name="telefono">
+				</div>
+				<div class="ui-field-contain">
+					<label for="estrellas">Estrellas:</label>
+					<select id="estrellas" name="estrellas">
+						<option value="">Seleccione</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a id="btnRegistrar" data-role="button">Registrar Hotel</a>
+					</div>
+					<div class="ui-block-b">
+						<a class="volver" data-role="button">Volver</a>
+					</div>
+				</div>				
+			</form>
+		</div>
+	</div>
+
+	<div data-role="page" id="pagListar">
+		<div data-role="header">
+			<h1>Lista Hoteles</h1>
+		</div>
+		<div data-role="content">
+			<form>
+				<ul data-role="listview" id="ListaDatos" data-inset="true"></ul>
+				<a class="volver" data-role="button">Volver</a>
+			</form>
+		</div>
+	</div>
+
+	<div data-role="page" id="pagDetalle" data-dialog="true">
+		<div data-role="header">
+			<h1>Datos Hotel</h1>
+		</div>
+		<div data-role="content">
+			<form>
+				<div id="datos"></div>
+				<div data-role="content" id="divMapa2"></div>
+				<a id="btnVolverLista" data-role="button">Lista Hoteles</a>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
