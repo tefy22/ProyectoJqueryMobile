@@ -1,11 +1,10 @@
-
+var hoteles=[];	
+var latG, lngG;
 
 $(document).ready(function () {
 
-	var marcador;
-	var hoteles=[];	
+	var marcador;	
 	var contadorId=1;
-	$("#id").val(contadorId);
 	
 	$("#btnRegistrarHotel").click(function(){
 		obtenerDirActual();
@@ -22,7 +21,6 @@ $(document).ready(function () {
 			datos.attr("onclick","mostrarDatos("+hoteles[i].id+")");		
 			$("#ListaDatos").append(lista);
 		}
-
 		cambiarPagina('pagListar');
 	});
 
@@ -35,10 +33,9 @@ $(document).ready(function () {
 	});
 
 	$("#btnRegistrar").click(function(){
-		var id= contadorId;
-		var latG, lngG;
+		var id= contadorId;		
 		var nombre= $("#nombre").val();
-		var ciudad= $("ciudad").val();
+		var ciudad= $("#ciudad").val();
 		var telefono= $("#telefono").val();
 		var estrellas= $("#estrellas").val();
 
@@ -60,18 +57,6 @@ $(document).ready(function () {
 
 
 });
-function mostrarDatos(id){
-	cambiarPagina('pagDetalle');
-
-	for (var i=0; i<hoteles.length; i++) {
-		if (id==hoteles[i].id){
-			console.log("Encontrado")
-		}else{
-			console.log("No encontrado")
-		}
-	}
-}
-
 //---------------CAMBIAR DE PAGINA--------------------
 function cambiarPagina(page){
 	$.mobile.changePage("#"+page,{
@@ -86,6 +71,27 @@ function limpiarCampos(){
 	var selectEstrellas= $("#estrellas");
 	selectEstrellas[0].selectedIndex=0;
 	selectEstrellas.selectmenu('refresh');	
+}
+//------------------MOSTRAR DATOS AL SELECCIONAR UN DATO--------------------
+function mostrarDatos(id){
+	cambiarPagina('pagDetalle');
+	var div= $("#datos");
+
+	for (var i=0; i<hoteles.length; i++) {
+		if (id==hoteles[i].id){
+			var datos="";
+			datos+="<b>Nombre: </b>"+hoteles[i].nombre+"<br>";
+			datos+="<b>Ciudad: </b>"+hoteles[i].ciudad+"<br>";
+			datos+="<b>Telefono: </b>"+hoteles[i].telefono+"<br>";
+			datos+="<b>Estrellas: </b>"+hoteles[i].estrellas+"<br>";
+			div.append(datos);
+
+			var latlngNuevo= new google.maps.LatLng(hoteles[i].latitud, hoteles[i].longitud);
+			mostrarMapaNuevo(latlngNuevo);
+		}else{
+			console.log("No encontrado")
+		}
+	}	
 }
 //--------------MAPA---------------------------------
 function mostrarMapa(posicion){
@@ -130,5 +136,19 @@ function obtenerDirActual(){
             timeout: 6000
 		});
 	}
+}
+//----------------------MOSTRAR MAPA NUEVO--------------------------
+function mostrarMapaNuevo(posNueva){
+	var opciones={
+		zoom:5,
+		center: posNueva,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var mapa= new google.maps.Map(document.getElementById('divMapa2'),opciones);
+	var marcadorNuevo= new google.maps.Marker({
+		position: posNueva,
+		map: mapa,
+		title:"Mi Ubicacion"
+	});
 }
 
