@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.css">
 	<script type="text/javascript" src="jquery-1.11.1.js"></script>
 	<script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 	<script type="text/javascript" src="index.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9NuvfZ7r4WMuS9UMjK_fJluCbN1_elRk&signed_in=true"
+        async defer>
+    </script>
 	<style type="text/css">
 		#divMapa, #divMapa2{
 			width: 100%;
@@ -60,14 +64,8 @@
 						<option value="5">5</option>
 					</select>
 				</div>
-				<div class="ui-grid-a">
-					<div class="ui-block-a">
-						<a id="btnRegistrar" data-role="button">Registrar Hotel</a>
-					</div>
-					<div class="ui-block-b">
-						<a class="volver" data-role="button">Volver</a>
-					</div>
-				</div>				
+				<a id="btnRegistrar" data-role="button">Registrar Hotel</a>
+				<a class="volver" data-role="button">Volver</a>
 			</form>
 		</div>
 	</div>
